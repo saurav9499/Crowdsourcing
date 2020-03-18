@@ -43,6 +43,7 @@ urlpatterns = [
     path('users/', UserList.as_view()),
     path('users/<pk>/', UserDetails.as_view()),
     path('groups/', GroupList.as_view()),
-    path('rest_api/images/', views.imageList.as_view() ),
+    path('rest_api/images/', views.getImage.as_view() ),
+    path('rest_api/images/save', views.sendData.as_view()),
     path('rest_api/hello/', views.ApiEndpoint.as_view())
 ]

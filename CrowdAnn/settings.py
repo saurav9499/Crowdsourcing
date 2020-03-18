@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     'CrowdAnn.rest_api',
     'rest_framework',
     'oauth2_provider',
@@ -69,7 +70,7 @@ WSGI_APPLICATION = 'CrowdAnn.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'CrowdAnn',
         'USER': 'postgres',
         'PASSWORD': 'shinigami',

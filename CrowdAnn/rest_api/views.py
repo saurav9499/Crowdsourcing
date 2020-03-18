@@ -5,7 +5,7 @@ from rest_framework.decorators import action
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import ImageSerializer
-from .models import Images
+from .models import Image
 from oauth2_provider.views.generic import ProtectedResourceView
 from django.http import HttpResponse
 # Create your views here.
@@ -16,11 +16,20 @@ class ApiEndpoint(ProtectedResourceView):
         return HttpResponse('Hello, OAuth2!')
 
 
-class imageList(APIView):
+class getImage(APIView):
     def get(self, request):
-        queryset = Images.objects.all()
+        queryset = Image.objects.all()
         serializer = ImageSerializer(queryset, many = True)
         return Response(serializer.data)
+
+class sendData(APIView):
+    def put(self, request, coordinates, label):
+        if request.method == 'PUT':
+            serializer = ImageSerializer(Image, data=request.data, context={'request':request})
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 

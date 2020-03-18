@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from .models import Images
+from .models import Image, Annotation
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -15,6 +15,9 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 class ImageSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Images
-        fields = ['image_source',]
-        
+        model = Image
+        fields = ['image_source']
+     
+class AnnotationSerializer(serializers.HyperlinkedModelSerializer):
+        model = Annotation
+        fields = ['image_id', 'coordinates', 'label']
