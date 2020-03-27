@@ -70,7 +70,7 @@ WSGI_APPLICATION = 'CrowdAnn.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'CrowdAnn',
         'USER': 'postgres',
         'PASSWORD': 'shinigami',
